@@ -1,0 +1,41 @@
+@import './fonts.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  /* updates in +layout.svelte */
+  --scrollbar-width: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  background-color: var(--color-sage);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent body scrolling when menu is open */
+body:has(.show-menu.overflowing) {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width);
+}
+
+body:has(.show-menu.overflowing) #toggle_menu {
+  right: var(--scrollbar-width);
+}
+
+body:has(.show-menu) .menu > div > div {
+  padding-right: var(--scrollbar-width);
+}
