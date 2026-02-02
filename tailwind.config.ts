@@ -14,6 +14,9 @@ export default {
       colors: {
         softwhite: '#fefcfb', // Soft White
         softblack: '#0d0d0d', // Soft Black
+
+        mediumblue: '#43579b',
+        darkblue: '#272c6b',
       },
     },
   },

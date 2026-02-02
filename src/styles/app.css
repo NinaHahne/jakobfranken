@@ -39,3 +39,53 @@ body:has(.show-menu.overflowing) #toggle_menu {
 body:has(.show-menu) .menu > div > div {
   padding-right: var(--scrollbar-width);
 }
+
+@layer base {
+  /* Typography */
+  h1 {
+    @apply text-4xl font-normal;
+    @apply mb-4;
+  }
+  h2 {
+    @apply text-3xl font-normal;
+    @apply mb-4;
+  }
+  h3 {
+    @apply text-2xl font-normal;
+    @apply mb-2;
+  }
+  h4 {
+    @apply text-xl font-normal;
+  }
+  h5 {
+    @apply text-lg font-normal;
+  }
+  h6 {
+    @apply text-lg font-normal;
+  }
+
+  blockquote {
+    @apply text-2xl font-light leading-snug md:text-3xl md:leading-snug;
+  }
+
+  aside {
+    @apply text-xl font-light leading-snug md:text-2xl md:leading-snug;
+  }
+
+  figcaption {
+    @apply text-base font-light leading-snug md:text-lg md:leading-snug xl:text-xl;
+  }
+
+  p,
+  a {
+    @apply text-lg font-extralight leading-normal md:text-xl xl:text-2xl;
+  }
+
+  a {
+    @apply text-black/70 underline decoration-black/50 decoration-1 underline-offset-4 transition active:decoration-transparent hoverable:hover:decoration-transparent;
+  }
+
+  footer a {
+    @apply text-base text-white underline decoration-transparent decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-white/60 hoverable:hover:opacity-80 md:whitespace-nowrap;
+  }
+}

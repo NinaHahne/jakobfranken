@@ -38,8 +38,8 @@
 
   let navigation = {
     navLinks: [
-      { title: 'Home', url: '/' },
-      { title: 'About', url: '/about/' },
+      // { title: 'Home', url: '/' },
+      // { title: 'About', url: '/about/' },
     ],
     footerLinks: [
       // { title: 'Impressum', url: '/impressum/' },
@@ -91,37 +91,28 @@
 </script>
 
 <svelte:head>
-  <title>SvelteKit Starter</title>
+  <title>Jakob Franken – Blues Music</title>
 
   <!-- Primary Meta -->
-  <meta name="title" content="SvelteKit Starter" />
-  <meta
-    name="description"
-    content="A starter template for SvelteKit projects with Tailwind CSS, TypeScript, and more."
-  />
+  <meta name="title" content="Jakob Franken – Blues Music" />
+  <meta name="description" content="Jakob Franken – Blues Guitarist from Berlin" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="canonical" href="https://sveltekit-starter.example.com/" />
+  <link rel="canonical" href="https://TODO.example.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="SvelteKit Starter" />
-  <meta property="og:url" content="https://sveltekit-starter.example.com/" />
-  <meta property="og:site_name" content="SvelteKit Starter" />
-  <meta
-    property="og:description"
-    content="A starter template for SvelteKit projects with Tailwind CSS, TypeScript, and more."
-  />
+  <meta property="og:title" content="Jakob Franken – Blues Music" />
+  <meta property="og:url" content="https://TODO.example.com/" />
+  <meta property="og:site_name" content="Jakob Franken – Blues Music" />
+  <meta property="og:description" content="Jakob Franken – Blues Guitarist from Berlin" />
   <meta property="og:image" content="/images/social-preview.jpg" />
   <meta property="og:locale" content="en_US" />
   <!-- <meta property="og:locale" content="de_DE" /> -->
 
   <!-- Twitter / X -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="SvelteKit Starter" />
-  <meta
-    property="twitter:description"
-    content="A starter template for SvelteKit projects with Tailwind CSS, TypeScript, and more."
-  />
+  <meta property="twitter:title" content="Jakob Franken – Blues Music" />
+  <meta property="twitter:description" content="Jakob Franken – Blues Guitarist from Berlin" />
   <meta property="twitter:image" content="/images/social-preview.jpg" />
 
   <!-- Browser / Theme -->
@@ -130,11 +121,11 @@
 
 <div
   bind:this={container}
-  class="relative flex min-h-dvh w-full flex-col justify-between"
+  class="bg-darkblue relative flex min-h-dvh w-full flex-col justify-between"
   class:overflowing={isBodyOverflowing}
   class:show-menu={showMenu}
 >
-  <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4 lg:bg-slate-100">
+  <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4">
     <nav class="relative flex h-full items-center justify-center gap-4">
       <LogoLink hideOnHome={false} />
       <ul class="hidden items-center gap-4 lg:flex">
@@ -143,7 +134,7 @@
           <li>
             <a
               href={url}
-              class="center inline-block origin-center leading-none text-black underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-black hoverable:hover:opacity-80 md:whitespace-nowrap"
+              class="center inline-block origin-center leading-none text-softwhite underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-softwhite hoverable:hover:opacity-80 md:whitespace-nowrap"
               class:active={isActive}
               class:decoration-black={isActive}
               class:decoration-transparent={!isActive}
@@ -174,7 +165,7 @@
     </button>
     <div class="relative flex h-full w-auto min-w-[75%] md:min-w-80">
       <div
-        class="pointer-events-auto relative -right-full flex h-full w-full flex-col gap-10 overflow-auto bg-white py-20 text-black transition-transform duration-300"
+        class="bg-darkblue pointer-events-auto relative -right-full flex h-full w-full flex-col gap-10 overflow-auto py-20 text-softwhite transition-transform duration-300"
         class:-translate-x-full={showMenu}
       >
         <!-- Navigation Links -->
@@ -187,7 +178,7 @@
             <li>
               <a
                 href={url}
-                class="center inline-block origin-center text-right text-3xl font-normal leading-none text-black underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-black hoverable:hover:opacity-80 md:whitespace-nowrap"
+                class="center inline-block origin-center text-right text-3xl font-normal leading-none text-softwhite underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-softwhite hoverable:hover:opacity-80 md:whitespace-nowrap"
                 class:active={isActive}
                 class:decoration-black={isActive}
                 class:decoration-transparent={!isActive}
@@ -208,10 +199,8 @@
   </main>
 
   <footer class="relative">
-    <div class="flex items-center bg-slate-100 p-4">
-      <p class="flex-1 text-left">renderedWithCare</p>
-      <div class="h-5 w-5 flex-none text-center">🌻</div>
-      <p class="flex-1 text-right">&copy; 2026 Erin Example</p>
+    <div class="flex items-center justify-center bg-softblack p-4 text-softwhite">
+      <p>&copy; 2026 Jakob Franken</p>
     </div>
   </footer>
 </div>

@@ -126,6 +126,9 @@ This starter includes:
 
 ---
 
-## ❓ Questions?
+## 🎨 Credits
 
-This template is designed for **flexibility**. Modify as needed! 🚀
+#TODO
+Bevan-Regular.ttf: Copyright 2016 The Bevan Project Authors (https://github.com/googlefonts/BevanFont)
+
+Bevan-Italic.ttf: Copyright 2016 The Bevan Project Authors (https://github.com/googlefonts/BevanFont)
