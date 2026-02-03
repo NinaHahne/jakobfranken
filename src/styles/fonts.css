@@ -4,7 +4,7 @@
   font-family: 'Bevan';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/bevan/bevan-v26-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('/fonts/bevan/bevan-v26-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* bevan-italic - latin */
 @font-face {
@@ -12,7 +12,7 @@
   font-family: 'Bevan';
   font-style: italic;
   font-weight: 400;
-  src: url('../fonts/bevan/bevan-v26-latin-italic.woff2') format('woff2');
+  src: url('/fonts/bevan/bevan-v26-latin-italic.woff2') format('woff2');
 }
 
 /* montserrat-300 - latin */
