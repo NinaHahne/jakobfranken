@@ -19,8 +19,6 @@ body {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
   background-color: var(--color-sage);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,7 +41,7 @@ body:has(.show-menu) .menu > div > div {
 @layer base {
   /* Typography */
   h1 {
-    @apply text-4xl font-normal;
+    @apply text-5xl;
     @apply mb-4;
   }
   h2 {
@@ -65,6 +63,7 @@ body:has(.show-menu) .menu > div > div {
   }
 
   blockquote {
+    /* @apply font-bevan; */
     @apply text-2xl font-light leading-snug md:text-3xl md:leading-snug;
   }
 

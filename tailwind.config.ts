@@ -9,7 +9,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['SourceSans3', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+
+        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        bevan: ['Bevan', 'cursive'],
       },
       colors: {
         softwhite: '#fefcfb', // Soft White
