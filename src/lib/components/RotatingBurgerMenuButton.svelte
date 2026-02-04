@@ -32,17 +32,17 @@
     class:rotate-180={isOpen}
   >
     <span
-      class="bg-softblack relative block h-[2px] w-full rounded-sm transition-transform duration-300"
+      class="relative block h-[2px] w-full rounded-sm bg-softwhite transition-transform duration-300"
       class:-rotate-45={isOpen}
       class:translate-y-[calc(var(--lh)+var(--g))]={isOpen}
     ></span>
     <span
-      class="bg-softblack relative block h-[2px] w-full scale-100 rounded-sm transition-all duration-300"
+      class="relative block h-[2px] w-full scale-100 rounded-sm bg-softwhite transition-all duration-300"
       class:opacity-0={isOpen}
       class:scale-0={isOpen}
     ></span>
     <span
-      class="bg-softblack relative block h-[2px] w-full rounded-sm transition-transform duration-300"
+      class="relative block h-[2px] w-full rounded-sm bg-softwhite transition-transform duration-300"
       class:rotate-45={isOpen}
       class:-translate-y-[calc(var(--lh)+var(--g))]={isOpen}
     ></span>

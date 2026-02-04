@@ -16,12 +16,13 @@
 
 <a
   href={`/`}
-  class="btn-shadow hoverable:hover:btn-shadow-hover flex-shrink-0"
+  class="btn-shadow hoverable:hover:btn-shadow-hover flex-shrink-0 no-underline"
   class:hidden={hideOnHome && page.url.pathname === '/'}
   class:invisible
   onclick={toggleMenuIfOpen}
 >
-  <img draggable="false" src="/favicon.png" alt="Logo / Home Icon" class="pointer-events-none h-10 w-auto" />
+  <!-- <img draggable="false" src="/favicon.png" alt="Logo / Home Icon" class="pointer-events-none h-10 w-auto" /> -->
+  <h2 class="font-bevan mb-0 text-softwhite">JF</h2>
 </a>
 
 <style>
