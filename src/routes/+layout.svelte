@@ -121,7 +121,7 @@
 
 <div
   bind:this={container}
-  class="bg-darkblue relative flex min-h-dvh w-full flex-col justify-between"
+  class="relative flex h-full min-h-dvh w-full flex-col justify-between bg-darkblue"
   class:overflowing={isBodyOverflowing}
   class:show-menu={showMenu}
 >
@@ -165,7 +165,7 @@
     </button>
     <div class="relative flex h-full w-auto min-w-[75%] md:min-w-80">
       <div
-        class="bg-darkblue pointer-events-auto relative -right-full flex h-full w-full flex-col gap-10 overflow-auto py-20 text-softwhite transition-transform duration-300"
+        class="pointer-events-auto relative -right-full flex h-full w-full flex-col gap-10 overflow-auto bg-darkblue py-20 text-softwhite transition-transform duration-300"
         class:-translate-x-full={showMenu}
       >
         <!-- Navigation Links -->
@@ -194,7 +194,7 @@
     </div>
   </nav>
 
-  <main class="relative flex flex-col p-4">
+  <main class="relative flex h-full flex-col p-4">
     {@render children()}
   </main>
 
