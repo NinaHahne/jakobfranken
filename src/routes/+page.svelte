@@ -31,3 +31,59 @@
     </div>
   </div>
 </section>
+
+<!-- Album section -->
+
+<section id="album" class="bg-denim w-full text-softwhite">
+  <div class="mx-auto grid w-full max-w-5xl gap-8 px-4 py-12 md:grid-cols-2 md:items-center md:gap-12 md:px-6 md:py-16">
+    <!-- Cover -->
+    <figure class="order-1 flex justify-end">
+      <img
+        src="/images/cover.webp"
+        alt="Album cover: Go Out and Shake It"
+        class="w-full max-w-md border border-softwhite/15 shadow-lg"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <!-- Copy + actions -->
+    <div class="order-2">
+      <p
+        class="border-apricot text-apricot inline-block border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]"
+      >
+        New album
+      </p>
+      <h2 class="mt-4 font-bevan leading-tight md:text-5xl">GO OUT and SHAKE iT</h2>
+      <div class="bg-apricot mt-4 h-1 w-12 md:w-16"></div>
+
+      <div class="mt-8">
+        <!-- Buy -->
+        <p class="text-fog mb-3 text-sm uppercase tracking-wide">Buy</p>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="https://jakobfranken.bandcamp.com/album/go-out-and-shake-it"
+            target="_blank"
+            rel="noreferrer"
+            class="bg-ink hoverable:hover:border-apricot hoverable:hover:text-apricot focus-visible:ring-apricot/30 inline-flex items-center gap-2 border border-softwhite/20 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-softwhite transition focus-visible:outline-none focus-visible:ring-4"
+          >
+            Bandcamp
+          </a>
+        </div>
+        <!-- Listen -->
+        <p class="text-fog mb-3 mt-6 text-sm uppercase tracking-wide">Listen</p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="https://open.spotify.com/intl-de/album/3vvShyc241lbQ3qgBM9VDf?si=BtoY7oyCQMKvXbMzqXJGsg"
+            target="_blank"
+            rel="noreferrer"
+            class="hoverable:hover:border-mauve hoverable:hover:text-mauve focus-visible:ring-mauve/30 inline-flex items-center gap-2 border border-softwhite/20 bg-transparent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4"
+          >
+            Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

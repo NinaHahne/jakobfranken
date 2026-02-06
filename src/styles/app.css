@@ -41,19 +41,19 @@ body:has(.show-menu) .menu > div > div {
 @layer base {
   /* Typography */
   h1 {
-    @apply text-5xl;
+    @apply text-4xl;
     @apply mb-4;
   }
   h2 {
-    @apply text-3xl font-normal;
+    @apply text-2xl font-normal;
     @apply mb-4;
   }
   h3 {
-    @apply text-2xl font-normal;
+    @apply text-xl font-normal;
     @apply mb-2;
   }
   h4 {
-    @apply text-xl font-normal;
+    @apply text-lg font-normal;
   }
   h5 {
     @apply text-lg font-normal;
@@ -81,7 +81,7 @@ body:has(.show-menu) .menu > div > div {
   }
 
   a {
-    @apply text-apricot decoration-apricot/60 underline decoration-1 underline-offset-4 transition active:decoration-transparent hoverable:hover:decoration-transparent;
+    @apply text-apricot decoration-apricot underline decoration-1 underline-offset-4 transition duration-300 active:decoration-transparent hoverable:hover:decoration-transparent hoverable:hover:opacity-80;
   }
 
   footer a {

@@ -42,6 +42,7 @@
     navLinks: [
       // { title: 'Home', url: '/' },
       // { title: 'About', url: '/about/' },
+      { title: 'New Album', url: '#album' },
     ],
     footerLinks: [
       // { title: 'Impressum', url: '/impressum/' },
@@ -128,21 +129,13 @@
   class:show-menu={showMenu}
 >
   <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4">
-    <nav class="relative flex h-full items-center justify-center gap-4">
+    <nav class="relative flex h-full items-end justify-center gap-4 md:gap-12">
       <LogoLink hideOnHome={false} />
-      <ul class="hidden items-center gap-4 lg:flex">
+      <ul class="hidden items-center gap-4 font-bevan lg:flex">
         {#each navigation?.navLinks ?? [] as { title, url }}
           {@const isActive = page.url.pathname === `${url}`}
           <li>
-            <a
-              href={url}
-              class="center inline-block origin-center leading-none text-softwhite underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-softwhite hoverable:hover:opacity-80 md:whitespace-nowrap"
-              class:active={isActive}
-              class:decoration-black={isActive}
-              class:decoration-transparent={!isActive}
-              class:opacity-80={isActive}
-              onclick={toggleMenu}
-            >
+            <a href={url} class="text-sm font-semibold uppercase tracking-[0.2em]" onclick={toggleMenu}>
               {title}
             </a>
           </li>
@@ -150,6 +143,7 @@
       </ul>
     </nav>
   </header>
+  <!--               class="center text-apricot hoverable:hover:decoration-apricot inline-block origin-center leading-none underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:opacity-80 md:whitespace-nowrap" -->
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
 
@@ -172,7 +166,7 @@
       >
         <!-- Navigation Links -->
         <ul
-          class="flex h-full flex-none flex-col items-end justify-start gap-6 p-6 transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
+          class="flex h-full flex-none flex-col items-start justify-start gap-6 p-6 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
         >
           {#each navigation?.navLinks ?? [] as { title, url }}
             {@const isActive = page.url.pathname === `${url}`}
@@ -180,11 +174,7 @@
             <li>
               <a
                 href={url}
-                class="center inline-block origin-center text-right text-3xl font-normal leading-none text-softwhite underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-softwhite hoverable:hover:opacity-80 md:whitespace-nowrap"
-                class:active={isActive}
-                class:decoration-black={isActive}
-                class:decoration-transparent={!isActive}
-                class:opacity-80={isActive}
+                class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
                 onclick={toggleMenu}
               >
                 {title}
