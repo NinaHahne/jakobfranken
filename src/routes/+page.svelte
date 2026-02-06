@@ -20,7 +20,7 @@
     </figure>
     <div class="h-full w-full md:mt-[20vh] md:flex md:justify-center md:py-[66px]">
       <blockquote
-        class="bg-ink/85 md:border-apricot border-apricot/30 relative border-t p-4 backdrop-blur md:max-w-md md:border-0 md:border-l-4 md:px-6 md:py-2"
+        class="bg-ink/85 md:border-apricot border-apricot/30 relative border-t px-4 py-6 backdrop-blur md:max-w-md md:border-0 md:border-l-4 md:px-6 md:py-2"
       >
         <div class="text-pretty">
           I'm a Blues guitarist from Berlin. <br />
@@ -35,7 +35,7 @@
 <!-- Album section -->
 
 <section id="album" class="bg-denim w-full text-softwhite">
-  <div class="mx-auto grid w-full max-w-5xl gap-8 px-4 py-12 md:grid-cols-2 md:items-center md:gap-12 md:px-6 md:py-16">
+  <div class="mx-auto grid w-full max-w-5xl gap-8 px-4 py-12 md:grid-cols-2 md:items-center md:gap-16 md:px-6 md:py-16">
     <!-- Cover -->
     <figure class="order-1 flex justify-end">
       <img

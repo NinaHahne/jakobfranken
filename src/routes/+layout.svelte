@@ -5,8 +5,7 @@
   import '../styles/app.css';
   import RotatingBurgerMenuButton from '$lib/components/RotatingBurgerMenuButton.svelte';
   import LogoLink from '$lib/components/LogoLink.svelte';
-  import BandcampIcon from '$lib/icons/BandcampIcon.svelte';
-  import InstagramIcon from '$lib/icons/InstagramIcon.svelte';
+  import SocialLinks from '$lib/components/SocialLinks.svelte';
 
   type MenuContext = {
     toggleMenuIfOpen: () => void;
@@ -143,7 +142,6 @@
       </ul>
     </nav>
   </header>
-  <!--               class="center text-apricot hoverable:hover:decoration-apricot inline-block origin-center leading-none underline decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:opacity-80 md:whitespace-nowrap" -->
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
 
@@ -161,27 +159,46 @@
     </button>
     <div class="relative flex h-full w-auto min-w-[max(calc(100%-80px),275px)] md:min-w-[max(50%,336px)]">
       <div
-        class="bg-denim pointer-events-auto relative -left-full flex h-full w-full flex-col gap-10 overflow-auto py-20 text-softwhite transition-transform duration-300"
+        class="bg-denim pointer-events-auto relative -left-full flex h-full w-full flex-col justify-between gap-10 overflow-auto pt-[66px] text-softwhite transition-transform duration-300"
         class:translate-x-full={showMenu}
       >
         <!-- Navigation Links -->
-        <ul
-          class="flex h-full flex-none flex-col items-start justify-start gap-6 p-6 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
-        >
-          {#each navigation?.navLinks ?? [] as { title, url }}
-            {@const isActive = page.url.pathname === `${url}`}
+        <div class="flex flex-col items-center">
+          <ul
+            class=" flex flex-col items-center justify-start gap-6 p-4 pt-12 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
+          >
+            {#each navigation?.navLinks ?? [] as { title, url }}
+              {@const isActive = page.url.pathname === `${url}`}
 
-            <li>
-              <a
-                href={url}
-                class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
-                onclick={toggleMenu}
-              >
-                {title}
-              </a>
-            </li>
-          {/each}
-        </ul>
+              <li>
+                <a
+                  href={url}
+                  class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
+                  onclick={toggleMenu}
+                >
+                  {title}
+                </a>
+              </li>
+            {/each}
+          </ul>
+          <a
+            href="#album"
+            class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
+            onclick={toggleMenu}
+          >
+            <img
+              src="/images/cover.webp"
+              alt="Album cover: Go Out and Shake It"
+              class="block w-48 border border-softwhite/15 shadow-lg"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </div>
+
+        <div class="flex justify-center p-6">
+          <SocialLinks />
+        </div>
       </div>
     </div>
   </nav>
@@ -193,28 +210,7 @@
   <footer class="relative">
     <div class="bg-mauve flex items-center justify-center border-t border-softwhite/30 p-6 text-softwhite">
       <div class="flex w-full max-w-5xl flex-col items-center justify-between gap-4">
-        <nav aria-label="Social links" class="flex items-center gap-6">
-          <a
-            href="https://jakobfranken.bandcamp.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Bandcamp"
-            class="hoverable:hover:text-ink focus-visible:ring-ink/30 text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4"
-          >
-            <BandcampIcon size={36} />
-          </a>
-
-          <a
-            href="https://www.instagram.com/jakobfranken_blues/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram"
-            class="hoverable:hover:text-ink focus-visible:ring-ink/30 text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4"
-          >
-            <InstagramIcon size={36} />
-          </a>
-        </nav>
-
+        <SocialLinks />
         <p class="text-ink text-sm">&copy; 2026 Jakob Franken</p>
       </div>
     </div>
