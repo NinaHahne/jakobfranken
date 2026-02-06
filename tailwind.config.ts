@@ -18,8 +18,13 @@ export default {
         softwhite: '#fefcfb', // Soft White
         softblack: '#0d0d0d', // Soft Black
 
-        mediumblue: '#43579b',
-        darkblue: '#272c6b',
+        // Album/Artwork Palette
+        ink: '#272c6b', // sehr dunkles Blau (dein darkblue)
+        denim: '#43579b', // mittleres Blau (dein mediumblue)
+        mauve: '#da86a2', // rosa/mauve
+        apricot: '#ffb760', // warmes, helles Orange (Akzent)
+        tangerine: '#fa9b2c', // kräftigeres Orange (sparsam!)
+        fog: '#b1b2b4', // neutrales Grau
       },
     },
   },

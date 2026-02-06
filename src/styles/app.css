@@ -88,3 +88,25 @@ body:has(.show-menu) .menu > div > div {
     @apply text-base text-white underline decoration-transparent decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-white/60 hoverable:hover:opacity-80 md:whitespace-nowrap;
   }
 }
+
+@layer utilities {
+  .logo-shadow {
+    filter: drop-shadow(-4px 8px 8px theme('colors.softblack / 0.25'));
+  }
+  .btn-shadow {
+    filter: drop-shadow(0 3px 6px theme('colors.softblack / 0.25'));
+    @apply transition;
+    transition-timing-function: ease-in-out;
+  }
+  .btn-shadow-hover {
+    filter: drop-shadow(0 3px 6px theme('colors.softblack / 0.4'));
+  }
+  .menu-shadow {
+    filter: drop-shadow(0 3px 6px theme('colors.softblack / 0.4'))
+      drop-shadow(0 6px 12px theme('colors.softblack / 0.4')) drop-shadow(0 12px 24px theme('colors.softblack / 0.4'));
+  }
+  .menu-shadow:hover {
+    filter: drop-shadow(0 3px 6px theme('colors.softblack / 0.3'))
+      drop-shadow(0 6px 12px theme('colors.softblack / 0.3')) drop-shadow(0 12px 24px theme('colors.softblack / 0.3'));
+  }
+}
