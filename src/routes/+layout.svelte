@@ -151,9 +151,9 @@
 
   <RotatingBurgerMenuButton isOpen={showMenu} onToggle={toggleMenu} />
 
-  <nav class="menu pointer-events-none fixed inset-0 z-30 flex h-auto min-h-dvh w-full justify-end overflow-hidden">
+  <nav class="menu pointer-events-none fixed inset-0 z-30 flex h-auto min-h-dvh w-full justify-start overflow-hidden">
     <button
-      class="absolute right-0 top-0 h-full w-full cursor-pointer text-inherit"
+      class="absolute left-0 top-0 h-full w-full cursor-pointer text-inherit"
       class:pointer-events-auto={showMenu}
       onclick={toggleMenuIfOpen}
       aria-label="Close menu"
@@ -163,10 +163,10 @@
         class:opacity-100={showMenu}
       ></span>
     </button>
-    <div class="relative flex h-full w-auto min-w-[75%] md:min-w-80">
+    <div class="relative flex h-full w-auto min-w-[max(calc(100%-80px),275px)] md:min-w-[max(50%,336px)]">
       <div
-        class="pointer-events-auto relative -right-full flex h-full w-full flex-col gap-10 overflow-auto bg-darkblue py-20 text-softwhite transition-transform duration-300"
-        class:-translate-x-full={showMenu}
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col gap-10 overflow-auto bg-darkblue py-20 text-softwhite transition-transform duration-300"
+        class:translate-x-full={showMenu}
       >
         <!-- Navigation Links -->
         <ul
