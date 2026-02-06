@@ -5,6 +5,8 @@
   import '../styles/app.css';
   import RotatingBurgerMenuButton from '$lib/components/RotatingBurgerMenuButton.svelte';
   import LogoLink from '$lib/components/LogoLink.svelte';
+  import BandcampIcon from '$lib/icons/BandcampIcon.svelte';
+  import InstagramIcon from '$lib/icons/InstagramIcon.svelte';
 
   type MenuContext = {
     toggleMenuIfOpen: () => void;
@@ -199,8 +201,32 @@
   </main>
 
   <footer class="relative">
-    <div class="flex items-center justify-center bg-softblack p-4 text-softwhite">
-      <p>&copy; 2026 Jakob Franken</p>
+    <div class="bg-mauve flex items-center justify-center border-t border-softwhite/30 p-6 text-softwhite">
+      <div class="flex w-full max-w-5xl flex-col items-center justify-between gap-4">
+        <nav aria-label="Social links" class="flex items-center gap-6">
+          <a
+            href="https://jakobfranken.bandcamp.com/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Bandcamp"
+            class="hoverable:hover:text-ink focus-visible:ring-ink/30 text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4"
+          >
+            <BandcampIcon size={36} />
+          </a>
+
+          <a
+            href="https://www.instagram.com/jakobfranken_blues/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            class="hoverable:hover:text-ink focus-visible:ring-ink/30 text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4"
+          >
+            <InstagramIcon size={36} />
+          </a>
+        </nav>
+
+        <p class="text-ink text-sm">&copy; 2026 Jakob Franken</p>
+      </div>
     </div>
   </footer>
 </div>

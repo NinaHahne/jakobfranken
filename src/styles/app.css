@@ -77,11 +77,11 @@ body:has(.show-menu) .menu > div > div {
 
   p,
   a {
-    @apply text-lg font-extralight leading-normal md:text-xl xl:text-2xl;
+    @apply text-lg font-light leading-normal md:text-xl xl:text-2xl;
   }
 
   a {
-    @apply text-black/70 underline decoration-black/50 decoration-1 underline-offset-4 transition active:decoration-transparent hoverable:hover:decoration-transparent;
+    @apply text-apricot decoration-apricot/60 underline decoration-1 underline-offset-4 transition active:decoration-transparent hoverable:hover:decoration-transparent;
   }
 
   footer a {
