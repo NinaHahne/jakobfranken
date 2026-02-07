@@ -61,7 +61,7 @@
       <h2 class="mt-4 font-bevan leading-tight md:text-5xl">Go Out and Shake It</h2>
       <div class="mt-4 h-1 w-12 bg-apricot md:w-16"></div>
 
-      <div class="mt-8">
+      <div class="mt-8 flex items-center">
         <!-- Buy -->
         <p class="mr-3 inline-block text-sm uppercase tracking-wide">Buy and Listen:</p>
 
@@ -69,10 +69,15 @@
           href="https://jakobfranken.bandcamp.com/album/go-out-and-shake-it"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center gap-2 border border-softwhite/20 bg-ink px-4 py-2 text-sm font-semibold uppercase tracking-wide text-softwhite transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 hoverable:hover:border-apricot hoverable:hover:text-apricot"
+          class="inline-flex items-center gap-2 border border-softwhite/20 bg-ink text-sm font-semibold uppercase tracking-wide text-softwhite transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 hoverable:hover:border-apricot hoverable:hover:text-apricot"
         >
-          <span>Bandcamp</span>
-          <BandcampIcon size={20} />
+          <!-- <span>Bandcamp</span>
+          <BandcampIcon size={20} /> -->
+          <img
+            src="/images/logos/bandcamp-logotype-light-128.png"
+            alt="Bandcamp logo"
+            class="inline-block h-8 w-auto"
+          />
         </a>
         <!-- <div class="flex flex-wrap items-center gap-3">
         </div> -->
