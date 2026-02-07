@@ -165,7 +165,7 @@
         <!-- Navigation Links -->
         <div class="flex flex-col items-center">
           <ul
-            class=" flex flex-col items-center justify-start gap-6 p-4 pt-12 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
+            class=" flex flex-col items-center justify-start gap-6 p-4 pt-8 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
           >
             {#each navigation?.navLinks ?? [] as { title, url }}
               {@const isActive = page.url.pathname === `${url}`}
@@ -189,14 +189,14 @@
             <img
               src="/images/cover.webp"
               alt="Album cover: Go Out and Shake It"
-              class="block w-48 border border-softwhite/15 shadow-lg"
+              class="block w-44 border border-softwhite/15 shadow-lg"
               loading="lazy"
               decoding="async"
             />
           </a>
         </div>
 
-        <div class="flex justify-center px-4 py-6">
+        <div class="flex justify-center p-4 pb-6">
           <div class="max-w-36">
             <SocialLinks />
           </div>
