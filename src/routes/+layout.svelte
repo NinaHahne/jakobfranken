@@ -123,7 +123,7 @@
 
 <div
   bind:this={container}
-  class="bg-ink relative flex h-auto min-h-dvh w-full flex-col justify-between"
+  class="relative flex h-auto min-h-dvh w-full flex-col justify-between bg-ink"
   class:overflowing={isBodyOverflowing}
   class:show-menu={showMenu}
 >
@@ -159,7 +159,7 @@
     </button>
     <div class="relative flex h-full w-auto min-w-[max(calc(100%-80px),275px)] md:min-w-[max(50%,336px)]">
       <div
-        class="bg-denim pointer-events-auto relative -left-full flex h-full w-full flex-col justify-between gap-10 overflow-auto pt-[66px] text-softwhite transition-transform duration-300"
+        class="pointer-events-auto relative -left-full flex h-full w-full flex-col justify-between gap-10 overflow-auto bg-denim pt-[66px] text-softwhite transition-transform duration-300"
         class:translate-x-full={showMenu}
       >
         <!-- Navigation Links -->
@@ -196,8 +196,10 @@
           </a>
         </div>
 
-        <div class="flex justify-center p-6">
-          <SocialLinks />
+        <div class="flex justify-center px-4 py-6">
+          <div class="max-w-36">
+            <SocialLinks />
+          </div>
         </div>
       </div>
     </div>
@@ -208,10 +210,12 @@
   </main>
 
   <footer class="relative">
-    <div class="bg-mauve flex items-center justify-center border-t border-softwhite/30 p-6 text-softwhite">
+    <div class="flex items-center justify-center border-t border-softwhite/30 bg-mauve p-6 text-softwhite">
       <div class="flex w-full max-w-5xl flex-col items-center justify-between gap-4">
-        <SocialLinks />
-        <p class="text-ink text-sm">&copy; 2026 Jakob Franken</p>
+        <div class="max-w-36 md:max-w-none">
+          <SocialLinks />
+        </div>
+        <p class="text-sm text-ink">&copy; 2026 Jakob Franken</p>
       </div>
     </div>
   </footer>

@@ -43,7 +43,7 @@
     aria-label="Spotify"
     class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
   >
-    <SpotifyIcon size={iconSize - 4} />
+    <SpotifyIcon size={iconSize * 0.89} />
   </a>
 
   <a
@@ -81,6 +81,6 @@
     aria-label="Send email to Jakob Franken"
     class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
   >
-    <MailIcon size={36} />
+    <MailIcon size={iconSize * 1.1} />
   </a>
 </nav>
