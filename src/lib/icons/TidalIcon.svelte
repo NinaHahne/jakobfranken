@@ -1,0 +1,27 @@
+<script lang="ts">
+  type Props = {
+    title?: string;
+    size?: number | string;
+    class?: string;
+    ariaLabel?: string;
+  };
+
+  let { title = 'TIDAL', size = 20, class: className = '', ariaLabel }: Props = $props();
+</script>
+
+<svg
+  role={ariaLabel ? 'img' : 'presentation'}
+  aria-label={ariaLabel}
+  aria-hidden={ariaLabel ? undefined : 'true'}
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  class={className}
+>
+  <title>{title}</title>
+  <path
+    d="M12.012 3.992L8.008 7.996 4.004 3.992 0 7.996 4.004 12l4.004-4.004L12.012 12l-4.004 4.004 4.004 4.004 4.004-4.004L12.012 12l4.004-4.004-4.004-4.004zM16.042 7.996l3.979-3.979L24 7.996l-3.979 3.979z"
+    fill="currentColor"
+  />
+</svg>
