@@ -1,7 +1,10 @@
 <!-- Homepage / Landing page / index -->
 
 <script lang="ts">
-  import BandcampIcon from '$lib/icons/BandcampIcon.svelte';
+  import type { Gig } from '$lib/data/gigs';
+  import { upcomingGigs } from '$lib/data/gigs';
+
+  const gigs: Gig[] = upcomingGigs;
 </script>
 
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
@@ -95,5 +98,80 @@
         </div> -->
       </div>
     </div>
+  </div>
+</section>
+
+<section id="live" class="w-full bg-ink text-softwhite">
+  <div class="mx-auto w-full max-w-5xl px-4 py-12 md:px-6 md:py-16">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <p
+          class="inline-block border border-apricot px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-apricot"
+        >
+          Live
+        </p>
+        <h2 class="mt-4 font-bevan leading-tight md:text-5xl">Upcoming gigs</h2>
+        <div class="mt-4 h-1 w-12 bg-apricot md:w-16"></div>
+      </div>
+
+      <!-- <p class="hidden text-sm text-softwhite/70 md:block">Dates subject to change.</p> -->
+    </div>
+
+    <!-- <div class="mt-10 border-t border-softwhite/15">
+      {#each gigs as gig (gig.dateLabel + gig.venue)}
+        <div
+          class="grid grid-cols-[9.5rem_1fr] items-center gap-6 border-b border-softwhite/10 py-6 md:grid-cols-[16rem_1fr]"
+        >
+          <p class="text-base uppercase tracking-wide text-softwhite/80">
+            {gig.dateLabel}
+          </p>
+
+          <div class="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            {#if gig.city}
+              <p class="text-base text-softwhite/70">{gig.city}</p>
+            {/if}
+            {#if gig.url}
+              <a
+                href={gig.url}
+                target="_blank"
+                rel="noreferrer"
+                class="underline decoration-softwhite/30 underline-offset-4 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 hoverable:hover:text-apricot hoverable:hover:decoration-apricot"
+              >
+                {gig.venue}
+              </a>
+            {:else}
+              <p>{gig.venue}</p>
+            {/if}
+          </div>
+        </div>
+      {/each}
+    </div> -->
+    <ul class="mt-10 border-t border-softwhite/15">
+      {#each gigs as gig (gig.dateLabel + gig.venue)}
+        <li class="border-b border-softwhite/10 py-6">
+          <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
+            <p class="text-base uppercase tracking-wide text-softwhite">
+              {gig.dateLabel}
+            </p>
+
+            <p class="text-base text-softwhite/70">
+              {gig.city || ''}
+            </p>
+
+            {#if gig.url}
+              <a href={gig.url} target="_blank" rel="noreferrer" class="">
+                {gig.venue}
+              </a>
+            {:else}
+              <p class="">
+                {gig.venue}
+              </p>
+            {/if}
+          </div>
+        </li>
+      {/each}
+    </ul>
+
+    <!-- <p class="mt-8 text-sm text-softwhite/70 md:hidden">Dates subject to change.</p> -->
   </div>
 </section>

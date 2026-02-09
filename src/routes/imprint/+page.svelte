@@ -7,7 +7,9 @@
   <title>Impressum | Jakob Franken – Blues Music</title>
 </svelte:head>
 
-<section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
+<section
+  class="relative flex h-full min-h-lvh flex-col items-center justify-center gap-4 px-4 py-[66px] text-softwhite"
+>
   <div>
     <h1>Impressum</h1>
     <p>
