@@ -169,7 +169,6 @@
           >
             {#each navigation?.navLinks ?? [] as { title, url }}
               {@const isActive = page.url.pathname === `${url}`}
-
               <li>
                 <a
                   href={url}
@@ -182,7 +181,7 @@
             {/each}
           </ul>
           <a
-            href="#album"
+            href={navigation?.navLinks[0].url}
             class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
             onclick={toggleMenu}
           >
