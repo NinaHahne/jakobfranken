@@ -10,9 +10,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['SourceSans3', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Bevan', 'Roboto Slab', 'Arvo', 'Rockwell', 'Georgia', 'serif'],
 
-        montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        bevan: ['Bevan', 'cursive'],
+        // montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        bevan: ['Bevan', 'Roboto Slab', 'Arvo', 'Rockwell', 'Georgia', 'serif'],
       },
       colors: {
         softwhite: '#fefcfb', // Soft White

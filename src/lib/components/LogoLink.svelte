@@ -22,7 +22,7 @@
   onclick={toggleMenuIfOpen}
 >
   <!-- <img draggable="false" src="/favicon.png" alt="Logo / Home Icon" class="pointer-events-none h-10 w-auto" /> -->
-  <h2 class="font-bevan mb-0 text-2xl uppercase text-softwhite md:text-3xl">Jakob Franken</h2>
+  <h2 class="mb-0 text-2xl uppercase text-softwhite md:text-3xl">Jakob Franken</h2>
 </a>
 
 <style>

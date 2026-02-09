@@ -41,7 +41,7 @@
     navLinks: [
       // { title: 'Home', url: '/' },
       // { title: 'About', url: '/about/' },
-      { title: 'New Album', url: '#album' },
+      { title: 'New Album', url: '/#album' },
     ],
     footerLinks: [
       // { title: 'Impressum', url: '/impressum/' },
@@ -215,7 +215,9 @@
         <div class="max-w-36 md:max-w-none">
           <SocialLinks />
         </div>
-        <p class="text-sm text-ink">&copy; 2026 Jakob Franken</p>
+        <p class="text-sm text-ink">
+          <a href="/imprint">Imprint</a> | <a href="/imprint">&copy; 2026 Jakob Franken</a>
+        </p>
       </div>
     </div>
   </footer>

@@ -19,6 +19,7 @@ body {
 }
 
 body {
+  font-family: 'SourceSans3', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif';
   background-color: var(--color-sage);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,6 +41,15 @@ body:has(.show-menu) .menu > div > div {
 
 @layer base {
   /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+    @apply text-softwhite;
+  }
   h1 {
     @apply text-4xl;
     @apply mb-4;
@@ -81,11 +91,11 @@ body:has(.show-menu) .menu > div > div {
   }
 
   a {
-    @apply text-apricot decoration-apricot underline decoration-1 underline-offset-4 transition duration-300 active:decoration-transparent hoverable:hover:decoration-transparent hoverable:hover:opacity-80;
+    @apply text-apricot underline decoration-apricot decoration-1 underline-offset-4 transition duration-300 active:decoration-transparent hoverable:hover:decoration-transparent hoverable:hover:opacity-80;
   }
 
   footer a {
-    @apply text-base text-white underline decoration-transparent decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-white/60 hoverable:hover:opacity-80 md:whitespace-nowrap;
+    @apply text-sm text-ink underline decoration-transparent decoration-1 underline-offset-4 transition-all duration-300 hoverable:hover:decoration-ink/60 hoverable:hover:opacity-80 md:whitespace-nowrap;
   }
 }
 
