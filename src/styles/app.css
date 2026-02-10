@@ -91,7 +91,7 @@ body:has(.show-menu) .menu > div > div {
   }
 
   a {
-    @apply text-apricot underline decoration-softwhite/30 decoration-1 underline-offset-4 transition duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 active:decoration-transparent hoverable:hover:text-apricot hoverable:hover:decoration-apricot hoverable:hover:opacity-80;
+    @apply text-apricot underline decoration-softwhite/30 decoration-1 underline-offset-4 transition duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 active:decoration-transparent hoverable:hover:decoration-apricot hoverable:hover:opacity-80;
   }
 
   header a,

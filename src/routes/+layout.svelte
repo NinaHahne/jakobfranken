@@ -37,18 +37,10 @@
   let showMenu: boolean = $state(false);
   let showNavigation = $state(false);
 
-  let navigation = {
-    navLinks: [
-      // { title: 'Home', url: '/' },
-      // { title: 'About', url: '/about/' },
-      { title: 'New Album', url: '/#album' },
-    ],
-    footerLinks: [
-      // { title: 'Impressum', url: '/impressum/' },
-      // { title: 'Kontakt', url: '/kontakt/' },
-      // { title: 'Datenschutz', url: '/datenschutz/' },
-    ],
-  };
+  let navLinks = [
+    { title: 'New Album', url: '/#album' },
+    { title: 'Live', url: '/#live' },
+  ];
 
   const toggleMenu = () => {
     // Check screen size before toggling
@@ -130,8 +122,8 @@
   <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4">
     <nav class="relative flex h-full items-end justify-center gap-4 md:gap-12">
       <LogoLink hideOnHome={false} />
-      <ul class="hidden items-center gap-4 font-bevan lg:flex">
-        {#each navigation?.navLinks ?? [] as { title, url }}
+      <ul class="hidden items-center gap-4 font-bevan md:gap-6 lg:flex">
+        {#each navLinks ?? [] as { title, url }}
           {@const isActive = page.url.pathname === `${url}`}
           <li>
             <a href={url} class="text-sm font-semibold uppercase tracking-[0.2em]" onclick={toggleMenu}>
@@ -164,10 +156,23 @@
       >
         <!-- Navigation Links -->
         <div class="flex flex-col items-center">
-          <ul
-            class=" flex flex-col items-center justify-start gap-6 p-4 pt-8 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
+          <a
+            href={navLinks[0].url}
+            class="center inline-block origin-center pt-8 text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
+            onclick={toggleMenu}
           >
-            {#each navigation?.navLinks ?? [] as { title, url }}
+            <img
+              src="/images/cover.webp"
+              alt="Album cover: Go Out and Shake It"
+              class="block w-44 border border-softwhite/15 shadow-lg"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <ul
+            class=" flex flex-col items-center justify-start gap-6 px-4 py-6 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
+          >
+            {#each navLinks ?? [] as { title, url }}
               {@const isActive = page.url.pathname === `${url}`}
               <li>
                 <a
@@ -180,19 +185,6 @@
               </li>
             {/each}
           </ul>
-          <a
-            href={navigation?.navLinks[0].url}
-            class="center inline-block origin-center text-left font-normal leading-none transition-all duration-300 md:whitespace-nowrap"
-            onclick={toggleMenu}
-          >
-            <img
-              src="/images/cover.webp"
-              alt="Album cover: Go Out and Shake It"
-              class="block w-44 border border-softwhite/15 shadow-lg"
-              loading="lazy"
-              decoding="async"
-            />
-          </a>
         </div>
 
         <div class="flex justify-center p-4 pb-6">

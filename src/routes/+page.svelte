@@ -30,9 +30,8 @@
         class="relative border-t border-apricot/30 bg-ink px-4 py-6 md:max-w-md md:border-0 md:border-l-4 md:border-apricot md:px-6 md:py-2"
       >
         <div class="text-pretty">
-          I'm a Blues guitarist from Berlin. <br />
-          I made a new album which you can hear and buy at bandcamp. For upcoming gigs check my instagram or subscribe to
-          my newsletter.
+          I'm a Blues guitarist based in Berlin. My new album is now out on Bandcamp. Follow me on Instagram for
+          upcoming news and gigs.
         </div>
       </blockquote>
     </div>
@@ -116,43 +115,21 @@
 
       <!-- <p class="hidden text-sm text-softwhite/70 md:block">Dates subject to change.</p> -->
     </div>
-
-    <!-- <div class="mt-10 border-t border-softwhite/15">
-      {#each gigs as gig (gig.dateLabel + gig.venue)}
-        <div
-          class="grid grid-cols-[9.5rem_1fr] items-center gap-6 border-b border-softwhite/10 py-6 md:grid-cols-[16rem_1fr]"
-        >
-          <p class="text-base uppercase tracking-wide text-softwhite/80">
-            {gig.dateLabel}
-          </p>
-
-          <div class="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            {#if gig.city}
-              <p class="text-base text-softwhite/70">{gig.city}</p>
-            {/if}
-            {#if gig.url}
-              <a
-                href={gig.url}
-                target="_blank"
-                rel="noreferrer"
-                class="underline decoration-softwhite/30 underline-offset-4 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-apricot/30 hoverable:hover:text-apricot hoverable:hover:decoration-apricot"
-              >
-                {gig.venue}
-              </a>
-            {:else}
-              <p>{gig.venue}</p>
-            {/if}
-          </div>
-        </div>
-      {/each}
-    </div> -->
     <ul class="mt-10 border-t border-softwhite/15">
       {#each gigs as gig (gig.dateLabel + gig.venue)}
         <li class="border-b border-softwhite/10 py-6">
           <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
-            <p class="text-base uppercase tracking-wide text-softwhite">
-              {gig.dateLabel}
-            </p>
+            <div class="flex gap-2 md:gap-4">
+              <p class="text-base uppercase tracking-wide text-softwhite">
+                {gig.dateLabel}
+              </p>
+              {#if gig.timeLabel}
+                <span class="text-softwhite/70">&middot;</span>
+                <p class="text-base uppercase tracking-wide text-softwhite">
+                  {gig.timeLabel}
+                </p>
+              {/if}
+            </div>
 
             <p class="text-base text-softwhite/70">
               {gig.city || ''}
