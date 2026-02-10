@@ -120,7 +120,7 @@
   class:show-menu={showMenu}
 >
   <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4">
-    <nav class="relative flex h-full items-end justify-center gap-4 md:gap-12">
+    <nav class="relative flex h-full items-end justify-center gap-4 md:gap-8">
       <LogoLink hideOnHome={false} />
       <ul class="hidden items-center gap-4 font-bevan md:gap-6 lg:flex">
         {#each navLinks ?? [] as { title, url }}
