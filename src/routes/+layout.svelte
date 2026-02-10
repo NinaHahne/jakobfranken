@@ -91,12 +91,12 @@
   <meta name="title" content="Jakob Franken – Blues Music" />
   <meta name="description" content="Jakob Franken – Blues Guitarist from Berlin" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="canonical" href="https://TODO.example.com/" />
+  <link rel="canonical" href="https://jakobfranken.com" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Jakob Franken – Blues Music" />
-  <meta property="og:url" content="https://TODO.example.com/" />
+  <meta property="og:url" content="https://jakobfranken.com" />
   <meta property="og:site_name" content="Jakob Franken – Blues Music" />
   <meta property="og:description" content="Jakob Franken – Blues Guitarist from Berlin" />
   <meta property="og:image" content="/images/social-preview.jpg" />
