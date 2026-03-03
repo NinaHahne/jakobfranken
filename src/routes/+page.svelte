@@ -25,6 +25,8 @@
     return { upcoming, past };
   }
   const { upcoming, past } = splitGigsByDate(allGigs);
+  upcoming.sort((a, b) => +new Date(a.date) - +new Date(b.date));
+  past.sort((a, b) => +new Date(b.date) - +new Date(a.date));
 </script>
 
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
@@ -135,40 +137,54 @@
 
       <!-- <p class="hidden text-sm text-softwhite/70 md:block">Dates subject to change.</p> -->
     </div>
-    <ul class="mt-10 border-t border-softwhite/15">
-      {#each upcoming as gig (gig.date + gig.venue)}
-        <li class="border-b border-softwhite/10 py-6">
-          <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
-            <div class="flex gap-2 md:gap-4">
-              <p class="text-base uppercase tracking-wide text-softwhite">
-                {formatDate(gig.date)}
-              </p>
-              {#if gig.timeLabel}
-                <span class="text-softwhite/70">&middot;</span>
+    {#if upcoming.length > 0}
+      <ul class="mt-10 border-t border-softwhite/15">
+        {#each upcoming as gig (gig.date + gig.venue)}
+          <li class="border-b border-softwhite/10 py-6">
+            <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
+              <div class="flex gap-2 md:gap-4">
                 <p class="text-base uppercase tracking-wide text-softwhite">
-                  {gig.timeLabel}
+                  {formatDate(gig.date)}
+                </p>
+                {#if gig.timeLabel}
+                  <span class="text-softwhite/70">&middot;</span>
+                  <p class="text-base uppercase tracking-wide text-softwhite">
+                    {gig.timeLabel}
+                  </p>
+                {/if}
+              </div>
+
+              <p class="text-base text-softwhite/70">
+                {gig.city || ''}
+              </p>
+
+              {#if gig.url}
+                <a href={gig.url} target="_blank" rel="noreferrer" class="">
+                  {gig.venue}
+                </a>
+              {:else}
+                <p class="">
+                  {gig.venue}
                 </p>
               {/if}
             </div>
-
-            <p class="text-base text-softwhite/70">
-              {gig.city || ''}
-            </p>
-
-            {#if gig.url}
-              <a href={gig.url} target="_blank" rel="noreferrer" class="">
-                {gig.venue}
-              </a>
-            {:else}
-              <p class="">
-                {gig.venue}
-              </p>
-            {/if}
+          </li>
+        {/each}
+      </ul>
+    {:else}
+      <!-- <div class="mt-10">
+        <p class="text-sm uppercase tracking-[0.2em] text-softwhite/70">TBA</p>
+      </div> -->
+      <ul class="mt-10 border-t border-softwhite/15">
+        <li class="border-b border-softwhite/10 py-6">
+          <div class="grid grid-cols-1 gap-2 md:grid-cols-[10rem_12rem_1fr] md:gap-6">
+            <p class="text-base uppercase tracking-wide text-softwhite/80">TBA</p>
+            <p class="text-base text-softwhite/70"></p>
+            <p class="text-base text-softwhite/80">New dates coming soon</p>
           </div>
         </li>
-      {/each}
-    </ul>
-
+      </ul>
+    {/if}
     <!-- <p class="mt-8 text-sm text-softwhite/70 md:hidden">Dates subject to change.</p> -->
   </div>
 </section>
