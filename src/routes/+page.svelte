@@ -2,9 +2,29 @@
 
 <script lang="ts">
   import type { Gig } from '$lib/data/gigs';
-  import { upcomingGigs } from '$lib/data/gigs';
+  import { allGigs, formatDate } from '$lib/data/gigs';
 
-  const gigs: Gig[] = upcomingGigs;
+  function splitGigsByDate(gigs: Gig[]) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // wichtig! vermeidet Zeit-Bugs
+
+    const upcoming: Gig[] = [];
+    const past: Gig[] = [];
+
+    for (const gig of gigs) {
+      const gigDate = new Date(gig.date);
+      gigDate.setHours(0, 0, 0, 0);
+
+      if (gigDate >= today) {
+        upcoming.push(gig);
+      } else {
+        past.push(gig);
+      }
+    }
+
+    return { upcoming, past };
+  }
+  const { upcoming, past } = splitGigsByDate(allGigs);
 </script>
 
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
@@ -116,12 +136,12 @@
       <!-- <p class="hidden text-sm text-softwhite/70 md:block">Dates subject to change.</p> -->
     </div>
     <ul class="mt-10 border-t border-softwhite/15">
-      {#each gigs as gig (gig.dateLabel + gig.venue)}
+      {#each upcoming as gig (gig.date + gig.venue)}
         <li class="border-b border-softwhite/10 py-6">
           <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
             <div class="flex gap-2 md:gap-4">
               <p class="text-base uppercase tracking-wide text-softwhite">
-                {gig.dateLabel}
+                {formatDate(gig.date)}
               </p>
               {#if gig.timeLabel}
                 <span class="text-softwhite/70">&middot;</span>
