@@ -8,7 +8,9 @@
 
   let showPastGigs = $state(false);
 
-  const { upcoming, past } = splitGigsByDate(data.concerts);
+  const gigsByDate = $derived(splitGigsByDate(data.concerts));
+  const upcoming = $derived(gigsByDate.upcoming);
+  const past = $derived(gigsByDate.past);
 </script>
 
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
