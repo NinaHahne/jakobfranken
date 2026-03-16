@@ -111,6 +111,15 @@
 
   <!-- Browser / Theme -->
   <meta name="theme-color" content="#000000" />
+
+  <!-- Preload fonts -->
+  <link
+    rel="preload"
+    href="/fonts/bevan/bevan-v26-latin-regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
 </svelte:head>
 
 <div
