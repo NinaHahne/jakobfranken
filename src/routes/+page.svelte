@@ -1,32 +1,14 @@
 <!-- Homepage / Landing page / index -->
 
 <script lang="ts">
-  import type { Gig } from '$lib/data/gigs';
-  import { allGigs, formatDate } from '$lib/data/gigs';
+  import { formatDate, splitGigsByDate } from '$lib/utils/gigs';
+  import type { PageData } from './$types';
 
-  function splitGigsByDate(gigs: Gig[]) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // wichtig! vermeidet Zeit-Bugs
+  let { data }: { data: PageData } = $props();
 
-    const upcoming: Gig[] = [];
-    const past: Gig[] = [];
+  let showPastGigs = $state(false);
 
-    for (const gig of gigs) {
-      const gigDate = new Date(gig.date);
-      gigDate.setHours(0, 0, 0, 0);
-
-      if (gigDate >= today) {
-        upcoming.push(gig);
-      } else {
-        past.push(gig);
-      }
-    }
-
-    return { upcoming, past };
-  }
-  const { upcoming, past } = splitGigsByDate(allGigs);
-  upcoming.sort((a, b) => +new Date(a.date) - +new Date(b.date));
-  past.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  const { upcoming, past } = splitGigsByDate(data.concerts);
 </script>
 
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
@@ -185,6 +167,58 @@
         </li>
       </ul>
     {/if}
-    <!-- <p class="mt-8 text-sm text-softwhite/70 md:hidden">Dates subject to change.</p> -->
+    {#if past.length > 0}
+      <div class="mt-12">
+        <button
+          type="button"
+          class="text-sm uppercase tracking-[0.2em] text-softwhite/70 transition-opacity hover:opacity-80"
+          onclick={() => (showPastGigs = !showPastGigs)}
+          aria-expanded={showPastGigs}
+        >
+          {showPastGigs ? 'Hide past gigs' : 'Show past gigs'}
+        </button>
+
+        {#if showPastGigs}
+          <ul class="mt-6 border-t border-softwhite/10">
+            {#each past as gig (gig.date + gig.venue)}
+              <li class="border-b border-softwhite/10 py-6 opacity-75">
+                <div class="grid grid-cols-1 items-center gap-2 md:grid-cols-[1fr_1fr_1fr] md:gap-6">
+                  <div class="flex gap-2 md:gap-4">
+                    <p class="text-base uppercase tracking-wide text-softwhite/80">
+                      {formatDate(gig.date)}
+                    </p>
+                    {#if gig.timeLabel}
+                      <span class="text-softwhite/50">&middot;</span>
+                      <p class="text-base uppercase tracking-wide text-softwhite/70">
+                        {gig.timeLabel}
+                      </p>
+                    {/if}
+                  </div>
+
+                  <p class="text-base text-softwhite/60">
+                    {gig.city || ''}
+                  </p>
+
+                  {#if gig.url}
+                    <a
+                      href={gig.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      class="text-softwhite/80 transition-opacity hover:opacity-80"
+                    >
+                      {gig.venue}
+                    </a>
+                  {:else}
+                    <p class="text-softwhite/80">
+                      {gig.venue}
+                    </p>
+                  {/if}
+                </div>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+      </div>
+    {/if}
   </div>
 </section>
