@@ -1,29 +1,52 @@
-# SvelteKit Starter
+# Jakob Franken – Website
 
-This is a **SvelteKit starter template** for new projects. It includes:
+This repository contains the source code for the official website of **blues guitarist Jakob Franken**.
 
-- ✅ **SvelteKit** with TypeScript
-- ✅ **TailwindCSS** for styling
-- ✅ **ESLint & Prettier** for code formatting
-- ✅ **Example routing (`/about`)** for structure reference
-- ✅ **Reusable utilities (`src/lib/`)**
-- ✅ **Uses `@sveltejs/adapter-static` for static site generation**
+The site is built with **SvelteKit** and designed as a lightweight, fast-loading artist page presenting the new album, upcoming concerts, and essential links.
+
+The project intentionally keeps the architecture simple while being prepared for future extensions such as a **headless CMS integration**.
+
+---
+
+## ✨ Features
+
+- Album section with Bandcamp integration
+- Upcoming concerts listing
+- Responsive layout for mobile and desktop
+- Reusable SVG icon components (Bandcamp, Spotify, Instagram, Mail)
+- Lightweight architecture optimized for static hosting
+- Prepared for future CMS integration (e.g. Sanity)
+
+---
+
+## 🧰 Tech Stack
+
+- **SvelteKit**
+- **TypeScript**
+- **TailwindCSS**
+- **@sveltejs/adapter-static** for static site generation
+
+---
 
 ## 🚀 Getting Started
 
-### 1️⃣ Install dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2️⃣ Start the development server
+### Start the development server
 
 ```bash
 npm run dev
 ```
 
-Then visit `http://localhost:5173`.
+Then open:
+
+```
+http://localhost:5173
+```
 
 ---
 
@@ -32,103 +55,69 @@ Then visit `http://localhost:5173`.
 ```
 src/
 ├── routes/             # SvelteKit pages
-│   ├── +layout.svelte  # Global layout
-│   ├── +page.svelte    # Homepage
-│   ├── about/          # Example page
-│   │   ├── +page.svelte
-├── lib/                # Shared utilities
-│   ├── stores/         # Global state management
-│   ├── utils/          # Helper functions
-│   ├── types/          # TypeScript types
-├── styles/             # Tailwind styles
-│   ├── app.css
+│   ├── +layout.svelte
+│   ├── +page.svelte
+│   ├── imprint/        # Legal notice (Impressum)
+│
+├── lib/
+│   ├── components/     # UI components
+│   ├── icons/          # SVG icon components
+│   ├── data/           # Structured content (e.g. concerts)
+│   ├── utils/
+│   └── types/
+│
+├── styles/
+│   └── app.css
 ```
 
 ---
 
-## 📌 Customization
+## 📅 Concert Data
 
-### Tailwind
+Upcoming concerts are currently defined in:
 
-TailwindCSS is preconfigured. Modify styles in:
-
-```bash
-src/styles/app.css
-tailwind.config.ts
+```
+src/lib/data/gigs.ts
 ```
 
-### Linting & Formatting
-
-ESLint and Prettier are included:
-
-```bash
-npm run lint
-```
-
-### Deployment
-
-By default, this uses **static site generation** (`adapter-static`).
-
-For Netlify:
-
-```bash
-npm install -D @sveltejs/adapter-netlify
-```
-
-Then update `svelte.config.js`.
+Past and upcoming concerts are automatically filtered based on the current date.  
+This structure is designed so it can later be replaced easily with data from a CMS such as **Sanity**.
 
 ---
 
-## 📷 Image Optimization (WebP, AVIF)
+## 🌐 Deployment
 
-This template supports **automatic image optimization** using `vite-imagetools`. It allows you to convert images to WebP/AVIF at build time.
+The site uses **static site generation** via `@sveltejs/adapter-static`.
 
-### Install `vite-imagetools`
+This allows deployment to platforms such as:
 
-```bash
-npm install vite-imagetools
-```
-
-### Configure `vite.config.ts`
-
-```ts
-import { defineConfig } from 'vite';
-import { imagetools } from 'vite-imagetools';
-
-export default defineConfig({
-  plugins: [imagetools()],
-});
-```
-
-### Usage in Svelte components
-
-```svelte
-<script>
-  import img from '$lib/images/sample.jpg?w=500&format=webp';
-</script>
-
-<img src={img} alt="Optimized Image" />
-```
-
-✅ **Pros:** No extra server needed, works seamlessly with `adapter-static`.
-
-## SEO Basics
-
-This starter includes:
-
-- `/robots.txt`
-- `/sitemap.xml` (placeholder)
-
-⚠️ Make sure to:
-
-- update the domain in `sitemap.xml`
-- replace the sitemap with a dynamic version if using a CMS
+- Netlify
+- GitHub Pages
+- Vercel
+- traditional web hosting
 
 ---
 
-## 🎨 Credits
+## 📷 Image Optimization
 
-#TODO
-Bevan-Regular.ttf: Copyright 2016 The Bevan Project Authors (https://github.com/googlefonts/BevanFont)
+Images are stored in **WebP format** for improved performance.
 
-Bevan-Italic.ttf: Copyright 2016 The Bevan Project Authors (https://github.com/googlefonts/BevanFont)
+If needed, the project can be extended with tools such as:
+
+```
+vite-imagetools
+```
+
+for automated image conversion during the build process.
+
+---
+
+## ⚖️ Font Licenses
+
+Font licenses used in this project are included in:
+
+```
+OFL.txt
+```
+
+These fonts are licensed under the **SIL Open Font License 1.1**.

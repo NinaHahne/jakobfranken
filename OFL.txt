@@ -1,0 +1,30 @@
+SIL OPEN FONT LICENSE Version 1.1
+
+This repository includes the following fonts licensed under the
+SIL Open Font License (OFL) Version 1.1.
+
+----------------------------------------
+Bevan
+----------------------------------------
+
+Copyright 2016 The Bevan Project Authors
+https://github.com/googlefonts/BevanFont
+
+Licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at:
+https://openfontlicense.org
+
+----------------------------------------
+Source Sans 3
+----------------------------------------
+
+Copyright 2010–2020 Adobe Systems Incorporated
+Designed by Paul D. Hunt
+
+Licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at:
+https://openfontlicense.org
+
+----------------------------------------
+
+The fonts are used in accordance with the terms of the SIL Open Font License.
