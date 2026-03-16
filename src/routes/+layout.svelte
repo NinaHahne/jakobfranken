@@ -1,6 +1,6 @@
 <!-- Global layout for all pages -->
 <script lang="ts">
-  import { page } from '$app/state';
+  // import { page } from '$app/state';
   import { onDestroy, onMount, setContext } from 'svelte';
   import '../styles/app.css';
   import RotatingBurgerMenuButton from '$lib/components/RotatingBurgerMenuButton.svelte';
@@ -16,14 +16,22 @@
   const getScrollbarWidth = () => {
     // Scrollbar-Breite ermitteln
     const e = document.createElement('div');
-    (e.style.visibility = 'hidden'), (e.style.width = '100px'), document.body.append(e);
+    e.style.visibility = 'hidden';
+    e.style.width = '100px';
+    document.body.append(e);
+
     const t = e.offsetWidth;
+
     e.style.overflow = 'scroll';
+
     const o = document.createElement('div');
-    (o.style.width = '100%'), e.append(o);
+    o.style.width = '100%';
+    e.append(o);
+
     const d = o.offsetWidth;
     e.remove();
-    document.body.style.setProperty('--scrollbar-width', t - d + 'px');
+
+    document.body.style.setProperty('--scrollbar-width', `${t - d}px`);
   };
 
   let container: HTMLElement;
@@ -35,7 +43,7 @@
   };
 
   let showMenu: boolean = $state(false);
-  let showNavigation = $state(false);
+  // let showNavigation = $state(false);
 
   let navLinks = [
     { title: 'New Album', url: '/#album' },
@@ -54,7 +62,9 @@
   };
 
   const toggleMenuIfOpen = () => {
-    !showMenu || toggleMenu();
+    if (showMenu) {
+      toggleMenu();
+    }
   };
 
   // Provide the toggleMenuIfOpen function to child components via context
@@ -75,7 +85,7 @@
       resizeObserver.observe(container);
     }
 
-    showNavigation = true;
+    // showNavigation = true;
   });
 
   onDestroy(() => {
@@ -133,7 +143,7 @@
       <LogoLink hideOnHome={false} />
       <ul class="hidden items-center gap-4 font-bevan md:gap-6 lg:flex">
         {#each navLinks ?? [] as { title, url }}
-          {@const isActive = page.url.pathname === `${url}`}
+          <!-- {@const isActive = page.url.pathname === `${url}`} -->
           <li>
             <a href={url} class="text-sm font-semibold uppercase tracking-[0.2em]" onclick={toggleMenu}>
               {title}
@@ -182,7 +192,7 @@
             class=" flex flex-col items-center justify-start gap-6 px-4 py-6 font-bevan transition-opacity duration-1000 md:px-[calc(6rem+var(--scrollbar-width))]"
           >
             {#each navLinks ?? [] as { title, url }}
-              {@const isActive = page.url.pathname === `${url}`}
+              <!-- {@const isActive = page.url.pathname === `${url}`} -->
               <li>
                 <a
                   href={url}
