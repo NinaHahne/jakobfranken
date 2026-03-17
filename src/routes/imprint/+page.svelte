@@ -18,5 +18,10 @@
       14169 Berlin<br />
       Mail: <a href="mailto:mail@jakobfranken.com" aria-label="Send email to Jakob Franken"> mail@jakobfranken.com </a>
     </p>
+    <h3 class="mt-6 md:mt-12 lg:mt-16">Web Design & Development</h3>
+    <p>
+      Nina Hahne<br />
+      <a href="https://ninahahne.rocks" target="_blank" rel="noopener">ninahahne.rocks</a>
+    </p>
   </div>
 </section>
