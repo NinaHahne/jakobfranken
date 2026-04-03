@@ -12,6 +12,8 @@
 
   const heroSrcSet = $derived(heroIntro?.image ? buildSrcSet(heroIntro.image, [400, 800, 1200, 1600]) : null);
 
+  const liveSection = $derived(data.liveSection);
+
   let showPastGigs = $state(false);
 
   const gigsByDate = $derived(splitGigsByDate(data.concerts));
@@ -133,9 +135,9 @@
         <p
           class="inline-block border border-apricot px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-apricot"
         >
-          Live
+          {liveSection?.eyebrow || 'Live'}
         </p>
-        <h2 class="mt-4 font-bevan leading-tight md:text-5xl">Upcoming gigs</h2>
+        <h2 class="mt-4 font-bevan leading-tight md:text-5xl">{liveSection?.heading || 'Upcoming gigs'}</h2>
         <div class="mt-4 h-1 w-12 bg-apricot md:w-16"></div>
       </div>
 
@@ -182,9 +184,9 @@
       <ul class="mt-10 border-t border-softwhite/15">
         <li class="border-b border-softwhite/10 py-6">
           <div class="grid grid-cols-1 gap-2 md:grid-cols-[10rem_12rem_1fr] md:gap-6">
-            <p class="text-base uppercase tracking-wide text-softwhite/80">TBA</p>
+            <p class="text-base uppercase tracking-wide text-softwhite/80">{liveSection?.emptyStateLabel || 'TBA'}</p>
             <p class="text-base text-softwhite/70"></p>
-            <p class="text-base text-softwhite/80">New dates coming soon</p>
+            <p class="text-base text-softwhite/80">{liveSection?.emptyStateText || 'New dates coming soon'}</p>
           </div>
         </li>
       </ul>
@@ -197,7 +199,9 @@
           onclick={() => (showPastGigs = !showPastGigs)}
           aria-expanded={showPastGigs}
         >
-          {showPastGigs ? 'Hide past gigs' : 'Show past gigs'}
+          {showPastGigs
+            ? liveSection?.hidePastLabel || 'Hide past gigs'
+            : liveSection?.showPastLabel || 'Show past gigs'}
         </button>
 
         {#if showPastGigs}
