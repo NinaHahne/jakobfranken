@@ -2,9 +2,15 @@
 
 <script lang="ts">
   import { formatDate, splitGigsByDate } from '$lib/utils/gigs';
+  import { buildImageUrl, buildSrcSet } from '$lib/sanity/image';
   import type { PageData } from './$types';
 
   let { data }: { data: PageData } = $props();
+
+  const heroIntro = $derived(data.heroIntro);
+  const heroImageUrl = $derived(heroIntro?.image ? buildImageUrl(heroIntro.image, 1400) : null);
+
+  const heroSrcSet = $derived(heroIntro?.image ? buildSrcSet(heroIntro.image, [400, 800, 1200, 1600]) : null);
 
   let showPastGigs = $state(false);
 
@@ -16,17 +22,31 @@
 <section class="relative flex h-full flex-col items-center justify-center gap-4 text-softwhite md:min-h-lvh">
   <div class="mx-auto flex w-full flex-col items-center justify-center md:flex-row-reverse md:justify-between md:gap-8">
     <figure class="sticky top-0 h-lvh w-full md:relative md:min-h-[700px] md:w-[50%] md:flex-shrink-0">
-      <img
-        src="/images/promo.webp"
-        alt="Jakob Franken playing guitar"
-        class="h-full w-full object-cover md:border md:border-softwhite/30"
-        loading="eager"
-        decoding="async"
-      />
-      <!-- Credit -->
-      <figcaption class="pointer-events-none absolute bottom-3 right-3 px-3 py-1 text-xs text-softwhite/90">
-        Picture by Joel Höglund
-      </figcaption>
+      {#if heroImageUrl}
+        <img
+          src={heroImageUrl}
+          srcset={heroSrcSet}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          alt={heroIntro?.imageAlt || 'Jakob Franken playing guitar'}
+          class="h-full w-full object-cover md:border md:border-softwhite/30"
+          loading="eager"
+          decoding="async"
+        />
+      {:else}
+        <img
+          src="/images/promo.webp"
+          alt="Jakob Franken playing guitar"
+          class="h-full w-full object-cover md:border md:border-softwhite/30"
+          loading="eager"
+          decoding="async"
+        />
+      {/if}
+
+      {#if heroIntro?.imageCredit}
+        <figcaption class="pointer-events-none absolute bottom-3 right-3 px-3 py-1 text-xs text-softwhite/90">
+          {heroIntro.imageCredit}
+        </figcaption>
+      {/if}
       <!-- <figcaption class="absolute bottom-3 right-6 origin-bottom-right rotate-90 text-xs text-softwhite/60">
         Picture by Joel Höglund
       </figcaption> -->
@@ -35,9 +55,9 @@
       <blockquote
         class="relative border-t border-apricot/30 bg-ink px-4 py-6 md:max-w-md md:border-0 md:border-l-4 md:border-apricot md:px-6 md:py-2"
       >
-        <div class="text-pretty">
-          I'm a Blues guitarist based in Berlin. My new album is now out on Bandcamp. Follow me on Instagram for
-          upcoming news and gigs.
+        <div class="whitespace-pre-line text-pretty">
+          {heroIntro?.bioText ||
+            "I'm a Blues guitarist based in Berlin. My new album is now out on Bandcamp. Follow me on Instagram for upcoming news and gigs."}
         </div>
       </blockquote>
     </div>
