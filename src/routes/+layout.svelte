@@ -14,7 +14,7 @@
 
   let { children } = $props();
 
-  const AUTO_UPDATE = false; // true = automatisch reload, false = Popup mit Button
+  const AUTO_UPDATE = true; // true = automatisch reload, false = Popup mit Button
   const UPDATED_PARAM = 'updated';
 
   let showUpdate = $state(false);
