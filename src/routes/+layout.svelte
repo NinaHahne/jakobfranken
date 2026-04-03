@@ -1,6 +1,7 @@
 <!-- Global layout for all pages -->
 <script lang="ts">
   // import { page } from '$app/state';
+  import { browser, dev } from '$app/environment';
   import { onDestroy, onMount, setContext } from 'svelte';
   import '../styles/app.css';
   import RotatingBurgerMenuButton from '$lib/components/RotatingBurgerMenuButton.svelte';
@@ -12,6 +13,52 @@
   };
 
   let { children } = $props();
+
+  const AUTO_UPDATE = false; // true = automatisch reload, false = Popup mit Button
+  const UPDATED_PARAM = 'updated';
+
+  let showUpdate = $state(false);
+  let updateToast = $state<'updated' | null>(null);
+  let waitingWorker: ServiceWorker | null = $state(null);
+  let reloadArmed = false;
+
+  function showToast(kind: 'updated') {
+    updateToast = kind;
+
+    window.setTimeout(() => {
+      updateToast = null;
+    }, 2500);
+  }
+
+  function reloadWithUpdatedParam() {
+    const url = new URL(window.location.href);
+    url.searchParams.set(UPDATED_PARAM, '1');
+    window.location.replace(url.toString());
+  }
+
+  function triggerUpdate() {
+    if (!waitingWorker) {
+      reloadWithUpdatedParam();
+      return;
+    }
+
+    let reloaded = false;
+
+    const doReload = () => {
+      if (reloaded) return;
+      reloaded = true;
+      reloadWithUpdatedParam();
+    };
+
+    navigator.serviceWorker.addEventListener('controllerchange', doReload, { once: true });
+
+    waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+
+    // Fallback, falls controllerchange nicht sauber feuert
+    window.setTimeout(doReload, 1200);
+
+    showUpdate = false;
+  }
 
   const getScrollbarWidth = () => {
     // Scrollbar-Breite ermitteln
@@ -52,7 +99,6 @@
 
   const toggleMenu = () => {
     // Check screen size before toggling
-
     if (window.matchMedia('(max-width: 1023px)').matches) {
       // if screen is smaller than lg breakpoint
       showMenu = !showMenu;
@@ -72,7 +118,78 @@
     toggleMenuIfOpen,
   });
 
+  let handleVisibilityChange: (() => void) | null = null;
+
   onMount(() => {
+    if (!browser) return;
+
+    // Toast nach Reload anzeigen, wenn ein Update aktiv übernommen wurde
+    {
+      const url = new URL(window.location.href);
+      const wasUpdated = url.searchParams.get(UPDATED_PARAM) === '1';
+
+      if (wasUpdated) {
+        url.searchParams.delete(UPDATED_PARAM);
+        window.history.replaceState({}, '', url.toString());
+        showToast('updated');
+      }
+    }
+
+    if (!dev && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').then((reg) => {
+        const handleWaiting = () => {
+          if (!reg.waiting) return;
+
+          waitingWorker = reg.waiting;
+
+          if (!AUTO_UPDATE) {
+            showUpdate = true;
+            return;
+          }
+
+          if (!reloadArmed) {
+            reloadArmed = true;
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+              reloadWithUpdatedParam();
+            });
+          }
+
+          waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+        };
+
+        handleWaiting();
+
+        reg.addEventListener('updatefound', () => {
+          const installing = reg.installing;
+          if (!installing) return;
+
+          installing.addEventListener('statechange', () => {
+            if (installing.state !== 'installed') return;
+
+            handleWaiting();
+
+            // extra Tick als Fallback
+            window.setTimeout(() => {
+              handleWaiting();
+            }, 0);
+          });
+        });
+
+        reg.update().catch(() => {});
+
+        handleVisibilityChange = () => {
+          if (document.visibilityState !== 'visible') return;
+
+          reg.update().catch(() => {});
+          handleWaiting();
+          window.setTimeout(handleWaiting, 0);
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+      });
+    }
+
     getScrollbarWidth();
 
     resizeObserver = new ResizeObserver(() => {
@@ -81,6 +198,7 @@
       // Handle layout changes here
       checkBodyOverflow();
     });
+
     if (container) {
       resizeObserver.observe(container);
     }
@@ -91,6 +209,11 @@
   onDestroy(() => {
     // console.log("layout onDestroy");
     resizeObserver?.disconnect();
+
+    if (handleVisibilityChange) {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      handleVisibilityChange = null;
+    }
   });
 </script>
 
@@ -231,4 +354,39 @@
       </div>
     </div>
   </footer>
+
+  {#if showUpdate}
+    <div class="pointer-events-none fixed inset-0 z-[100] grid place-items-end p-4">
+      <div
+        class="pointer-events-auto w-full max-w-md rounded-2xl border border-softwhite/20 bg-ink/95 p-4 shadow-lg backdrop-blur"
+      >
+        <div class="text-sm font-medium text-softwhite">Update available</div>
+        <div class="mt-1 text-sm text-softwhite/80">A new version of this site is available. Reload to update.</div>
+
+        <div class="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            class="rounded-xl border border-softwhite/20 px-3 py-2 text-sm text-softwhite"
+            onclick={() => (showUpdate = false)}
+          >
+            Later
+          </button>
+
+          <button type="button" class="rounded-xl bg-mauve px-3 py-2 text-sm text-ink" onclick={triggerUpdate}>
+            Reload now
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
+
+  {#if updateToast}
+    <div class="pointer-events-none fixed inset-0 z-[110] p-4">
+      <div
+        class="pointer-events-auto inline-flex items-center gap-2 rounded-2xl border border-softwhite/20 bg-ink/95 px-3 py-2 text-sm text-softwhite shadow-lg backdrop-blur"
+      >
+        <span>✅ Site updated</span>
+      </div>
+    </div>
+  {/if}
 </div>

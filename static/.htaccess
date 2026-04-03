@@ -1,0 +1,28 @@
+<IfModule mod_headers.c>
+  # HTML immer revalidieren, damit neue Builds schnell sichtbar werden
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # Root-Dokument ohne Dateiendung (z. B. /)
+  <Files "index.html">
+    Header set Cache-Control "no-cache"
+  </Files>
+
+  # Service Worker nie hart cachen
+  <Files "service-worker.js">
+    Header set Cache-Control "no-cache"
+  </Files>
+
+  # Manifest optional ebenfalls revalidieren
+  <FilesMatch "^(manifest\.webmanifest|manifest\.json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # Bilder, Fonts, JS, CSS moderat cachen
+  # bewusst NICHT immutable für alles, damit auch ungehashte static-Dateien
+  # auf klassischen Hostern nicht ewig hängen bleiben
+  <FilesMatch "\.(css|js|mjs|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
