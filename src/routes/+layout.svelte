@@ -8,11 +8,13 @@
   import LogoLink from '$lib/components/LogoLink.svelte';
   import SocialLinks from '$lib/components/SocialLinks.svelte';
 
+  import type { LayoutData } from './$types';
+
   type MenuContext = {
     toggleMenuIfOpen: () => void;
   };
 
-  let { children } = $props();
+  let { children, data }: { children: import('svelte').Snippet; data: LayoutData } = $props();
 
   const AUTO_UPDATE = true; // true = automatisch reload, false = Popup mit Button
   const UPDATED_PARAM = 'updated';
@@ -21,6 +23,21 @@
   let updateToast = $state<'updated' | null>(null);
   let waitingWorker: ServiceWorker | null = $state(null);
   let reloadArmed = false;
+
+  const siteTexts = $derived(data.siteTexts);
+
+  const navLinks = $derived([
+    {
+      title: siteTexts?.albumNavLabel || 'New Album',
+      url: '/#album',
+    },
+    {
+      title: siteTexts?.liveNavLabel || 'Live',
+      url: '/#live',
+    },
+  ]);
+
+  const currentYear = browser ? new Date().getFullYear() : 2026;
 
   function showToast(kind: 'updated') {
     updateToast = kind;
@@ -91,11 +108,6 @@
 
   let showMenu: boolean = $state(false);
   // let showNavigation = $state(false);
-
-  let navLinks = [
-    { title: 'New Album', url: '/#album' },
-    { title: 'Live', url: '/#live' },
-  ];
 
   const toggleMenu = () => {
     // Check screen size before toggling
@@ -263,7 +275,7 @@
 >
   <header class="fixed top-0 z-40 flex h-[66px] w-full justify-between p-4">
     <nav class="relative flex h-full items-end justify-center gap-4 md:gap-8">
-      <LogoLink hideOnHome={false} />
+      <LogoLink text={siteTexts?.siteTitle || 'Jakob Franken'} hideOnHome={false} />
       <ul class="hidden items-center gap-4 font-bevan md:gap-6 lg:flex">
         {#each navLinks ?? [] as { title, url }}
           <!-- {@const isActive = page.url.pathname === `${url}`} -->
@@ -349,7 +361,8 @@
           <SocialLinks />
         </div>
         <p class="text-sm text-ink">
-          <a href="/imprint">Imprint</a> | <a href="/imprint">&copy; 2026 Jakob Franken</a>
+          <a href="/imprint">{siteTexts?.imprintLabel || 'Imprint'}</a> |
+          <a href="/imprint">&copy; {currentYear} {siteTexts?.siteTitle || 'Jakob Franken'}</a>
         </p>
       </div>
     </div>

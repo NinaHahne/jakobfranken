@@ -8,7 +8,12 @@
 
   const { toggleMenuIfOpen } = getContext<MenuContext>('menu');
 
-  let { hideOnHome = true, invisible = false } = $props<{
+  let {
+    text = 'Jakob Franken',
+    hideOnHome = true,
+    invisible = false,
+  } = $props<{
+    text?: string;
     hideOnHome?: boolean;
     invisible?: boolean;
   }>();
@@ -22,7 +27,7 @@
   onclick={toggleMenuIfOpen}
 >
   <!-- <img draggable="false" src="/favicon.png" alt="Logo / Home Icon" class="pointer-events-none h-10 w-auto" /> -->
-  <h2 class="mb-0 text-2xl uppercase text-softwhite md:text-3xl">Jakob Franken</h2>
+  <h2 class="mb-0 text-2xl uppercase text-softwhite md:text-3xl">{text}</h2>
 </a>
 
 <style>

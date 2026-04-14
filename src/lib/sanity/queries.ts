@@ -1,3 +1,12 @@
+export const SITE_TEXTS_QUERY = `
+  *[_type == "siteTexts" && _id == "siteTexts"][0]{
+    siteTitle,
+    albumNavLabel,
+    liveNavLabel,
+    imprintLabel
+  }
+`;
+
 export const HERO_INTRO_QUERY = `
   *[_type == "heroIntro" && _id == "heroIntro"][0]{
     bioText,
