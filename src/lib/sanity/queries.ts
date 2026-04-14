@@ -36,3 +36,9 @@ export const CONCERTS_QUERY = `
   url
 }
 `;
+
+export const IMPRINT_QUERY = `
+  *[_type == "imprint" && _id == "imprint"][0]{
+    content
+  }
+`;

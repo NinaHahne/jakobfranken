@@ -39,6 +39,7 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
+    "@portabletext/svelte": "^3.0.1",
     "@sanity/client": "^7.17.0",
     "@sanity/image-url": "^2.1.1",
     "groq": "^5.16.0"
