@@ -3,7 +3,7 @@
   import TidalIcon from '$lib/icons/TidalIcon.svelte';
   import SpotifyIcon from '$lib/icons/SpotifyIcon.svelte';
   import AppleMusicIcon from '$lib/icons/AppleMusicIcon.svelte';
-  import YoutubeMusicIcon from '$lib/icons/YoutubeMusicIcon.svelte';
+  // import YoutubeMusicIcon from '$lib/icons/YoutubeMusicIcon.svelte';
   import InstagramIcon from '$lib/icons/InstagramIcon.svelte';
   import MailIcon from '$lib/icons/MailIcon.svelte';
 
@@ -59,7 +59,7 @@
       <AppleMusicIcon size={iconSize} />
     </a>
 
-    <a
+    <!-- <a
       href="https://music.youtube.com/channel/UCAR-p_zoydigUVxsa4PUBnA?si=F5fDE5x49ob7D4hy"
       target="_blank"
       rel="noreferrer"
@@ -67,7 +67,7 @@
       class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
     >
       <YoutubeMusicIcon size={iconSize} />
-    </a>
+    </a> -->
   {/if}
 
   <a
