@@ -14,7 +14,7 @@
 
   let { iconSize = 36, class: className = '' }: Props = $props();
 
-  const skipLinks = true;
+  const skipLinks = false;
 </script>
 
 <nav aria-label="Social links" class={`flex flex-wrap items-center justify-center gap-4 md:gap-6 ${className}`}>
