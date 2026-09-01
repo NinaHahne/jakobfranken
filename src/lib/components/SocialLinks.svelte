@@ -2,7 +2,8 @@
   import BandcampIcon from '$lib/icons/BandcampIcon.svelte';
   import TidalIcon from '$lib/icons/TidalIcon.svelte';
   import SpotifyIcon from '$lib/icons/SpotifyIcon.svelte';
-  import AppleMusicIcon from '$lib/icons/AppleMusicIcon.svelte';
+  // import AppleMusicIcon from '$lib/icons/AppleMusicIcon.svelte';
+  import FacebookIcon from '$lib/icons/FacebookIcon.svelte';
   // import YoutubeMusicIcon from '$lib/icons/YoutubeMusicIcon.svelte';
   import InstagramIcon from '$lib/icons/InstagramIcon.svelte';
   import MailIcon from '$lib/icons/MailIcon.svelte';
@@ -12,7 +13,7 @@
     class?: string;
   };
 
-  let { iconSize = 36, class: className = '' }: Props = $props();
+  let { iconSize = 32, class: className = '' }: Props = $props();
 
   const skipLinks = false;
 </script>
@@ -25,7 +26,7 @@
     aria-label="Bandcamp"
     class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
   >
-    <BandcampIcon size={iconSize} />
+    <BandcampIcon size={iconSize * 1.125} />
   </a>
 
   {#if !skipLinks}
@@ -36,7 +37,7 @@
       aria-label="TIDAL"
       class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
     >
-      <TidalIcon size={iconSize} />
+      <TidalIcon size={iconSize * 1.125} />
     </a>
 
     <a
@@ -46,10 +47,10 @@
       aria-label="Spotify"
       class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
     >
-      <SpotifyIcon size={iconSize * 0.89} />
+      <SpotifyIcon size={iconSize} />
     </a>
 
-    <a
+    <!-- <a
       href="https://music.apple.com/de/artist/jakob-franken/1869477733"
       target="_blank"
       rel="noreferrer"
@@ -57,6 +58,16 @@
       class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
     >
       <AppleMusicIcon size={iconSize} />
+    </a> -->
+
+    <a
+      href="https://www.facebook.com/jakobfrankenblues"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Facebook"
+      class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
+    >
+      <FacebookIcon size={iconSize} />
     </a>
 
     <!-- <a
@@ -85,6 +96,6 @@
     aria-label="Send email to Jakob Franken"
     class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
   >
-    <MailIcon size={iconSize * 1.1} />
+    <MailIcon size={iconSize * 1.125} />
   </a>
 </nav>
