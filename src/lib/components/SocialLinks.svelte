@@ -60,16 +60,6 @@
       <AppleMusicIcon size={iconSize} />
     </a> -->
 
-    <a
-      href="https://www.facebook.com/jakobfrankenblues"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Facebook"
-      class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
-    >
-      <FacebookIcon size={iconSize} />
-    </a>
-
     <!-- <a
       href="https://music.youtube.com/channel/UCAR-p_zoydigUVxsa4PUBnA?si=F5fDE5x49ob7D4hy"
       target="_blank"
@@ -89,6 +79,16 @@
     class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
   >
     <InstagramIcon size={iconSize} />
+  </a>
+
+  <a
+    href="https://www.facebook.com/jakobfrankenblues"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Facebook"
+    class="text-softwhite/80 transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ink/30 hoverable:hover:text-ink"
+  >
+    <FacebookIcon size={iconSize} />
   </a>
 
   <a
